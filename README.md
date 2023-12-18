@@ -17,8 +17,8 @@ Exemple de projet : Flask + Actions GitHub. Application de salutations multiling
 ```
 ## Starting the project
 
--python multi_language.py
--The application will be available at http://0.0.0.0:8083/. Check out the different welcome languages using your web browser.
+- python multi_language.py
+- The application will be available at http://0.0.0.0:8083/. Check out the different welcome languages using your web browser.
 
 ### 1. Installing dependencies
 
