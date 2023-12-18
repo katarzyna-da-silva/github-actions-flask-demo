@@ -1,0 +1,23 @@
+pytest==7.4.0
+Flask==1.1.4
+Werkzeug==1.0.1
+Jinja2==2.11.3
+MarkupSafe==1.1.1
+
+#pytest==7.4.0: 
+
+#Elle spécifie un package Python et sa version 
+#sur laquelle votre projet dépend. Dans ce cas, cela indique que votre projet nécessite pytest en version 
+#7.4.0. pytest est un framework de test pour Python qui vous permet d'écrire et d'exécuter 
+#des tests unitaires.
+
+#Flask==2.0.1:
+#spécifie que la version 2.0.1 est requise. 
+#Flask est un framework web léger et flexible pour Python, 
+#souvent utilisé pour construire des applications web.
+
+#Le fichier requirements.txt est couramment utilisé dans les projets 
+#Python pour gérer et déclarer les dépendances. Lorsque vous partagez votre projet avec 
+#d'autres personnes ou le déployez, elles peuvent 
+#utiliser ce fichier pour installer les dépendances requises avec les versions spécifiées, 
+#assurant ainsi une cohérence entre différents environnements.

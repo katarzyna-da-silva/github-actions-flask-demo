@@ -1,0 +1,54 @@
+name: Exécuter un script Python
+
+on:
+# workflow sera lancé lorsqu'une nouvelle pull request vers la branche master apparaîtra.
+  pull_request:
+    branches:
+      - master
+# Cette section définit le moment où le flux de travail doit s'exécuter. 
+# Dans ce cas, le workflow sera lancé après chaque push vers la branche master.    -evenements
+  push:
+    branches:
+      - master
+# workflow sera lancé après la création de chaque nouvelle balise.
+    tags:
+      - '*'
+# déclenchement manuel d'un workflow, exécuter manuellement depuis l'interface GitHub. 
+  workflow_dispatch:
+# déclencheurs planifiés (planification Cron)
+  schedule:
+    - cron: '0 9 * * *'
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+## Action « checkout » : actuel repo sera téléchargé sur la machine sur laquelle le flux de travail est exécuté. + version actuel 
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+## Configuration et installation de l'environnement Python sur la machine où s'exécute le workflow.
+      - name: Set up Python
+## nous utilisons python version 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+##lancer, installer et mettre à jour pip (gestionnaire de packages pour Python).
+##dépendances de fichiers à partir de Requirements.txt en utilisant python -m pip install -r Requirements.txt.
+##Listez les packages installés avec python -m pip list.
+##Exécutez des tests unitaires :
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt  
+          python -m pip list
+##Exécutez des tests unitaires :
+      - name: Run Unit Tests
+        run: pytest
+## Executez hello world : 8083 
+      - name: Run Flask app
+        run: |
+            python multi_language.py &
+            sleep 30  
+            curl -I http://localhost:8083/ 
+# Augmente le temps de lancement de l'application
+# Après avoir envoyé la requête, curl reçoit la réponse du serveur et l'affiche dans le terminal.
